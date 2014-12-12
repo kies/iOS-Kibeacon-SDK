@@ -32,6 +32,7 @@ typedef void(^KBSpecifiedServiceUpdatedBlock)(CBService * service,NSError * erro
 
 typedef void(^KBDidChangeAuthorizationStatus)  (CLAuthorizationStatus status);
 typedef void(^KBDidRangeBeacons)  (NSArray *beacons, CLBeaconRegion *region);
+typedef void(^KBDidUpdateRegion)  (BOOL isEnter, CLBeaconRegion *region);
 typedef void(^KBDidEnterRegion)  (CLRegion *region);
 typedef void(^KBDidExitRegion)  (CLRegion *region);
 typedef void(^KBDidDetermineState)(CLRegion *region);

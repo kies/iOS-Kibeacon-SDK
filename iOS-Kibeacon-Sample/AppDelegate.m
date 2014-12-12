@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "KibeaconManager.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    UIBackgroundTaskIdentifier bgTask;
+}
+@property (strong, nonatomic) KibeaconManager *beaconManager;
 
 @end
 
@@ -17,6 +21,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.beaconManager = [KibeaconManager kibeaconManager];
+    [_beaconManager startMonitoringForBeacons:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Access Missing"
+                                                        message:@"Required Location Access(Always) missing. Click Settings to update Location Access."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Settings"
+                                              otherButtonTitles:@"Cancel", nil];
+        [alert show];
+    } Updated:^(BOOL isEnter, CLBeaconRegion *region) {
+        UILocalNotification *notification = [UILocalNotification new];
+
+        if (isEnter) {
+            // Notification details
+            notification.alertBody = [NSString stringWithFormat:@"Entered beacon region for UUID: %@",
+                                      region.proximityUUID.UUIDString];
+        } else {
+            notification.alertBody = [NSString stringWithFormat:@"Exited beacon region for UUID: %@",
+                                      region.proximityUUID.UUIDString];
+        }
+        
+        notification.alertAction = NSLocalizedString(@"View Details", nil);
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    }];
     return YES;
 }
 
@@ -28,6 +58,11 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -40,6 +75,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [_beaconManager stopMonitoringForBeacons];
 }
 
 @end

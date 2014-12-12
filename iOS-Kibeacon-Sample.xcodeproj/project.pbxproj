@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F201D7341A39BA20004829A7 /* libiOS-Kibeacon-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F201D7331A39BA20004829A7 /* libiOS-Kibeacon-SDK.a */; };
 		F2B130D41A39BB3300233A3B /* iBeaconSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B130CD1A39BB3300233A3B /* iBeaconSampleViewController.m */; };
 		F2B130D51A39BB3300233A3B /* KibeaconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B130CF1A39BB3300233A3B /* KibeaconTableViewCell.m */; };
 		F2B130D61A39BB3300233A3B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B130D11A39BB3300233A3B /* MainViewController.m */; };
@@ -17,10 +16,10 @@
 		F2BA93111A367BFE0076B752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2BA930F1A367BFE0076B752 /* Main.storyboard */; };
 		F2BA93131A367BFE0076B752 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2BA93121A367BFE0076B752 /* Images.xcassets */; };
 		F2BA93161A367BFE0076B752 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BA93141A367BFE0076B752 /* LaunchScreen.xib */; };
+		F2CC22691A3AE6F60011AAF5 /* libiOS-Kibeacon-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CC22681A3AE6F60011AAF5 /* libiOS-Kibeacon-SDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F201D7331A39BA20004829A7 /* libiOS-Kibeacon-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libiOS-Kibeacon-SDK.a"; sourceTree = "<group>"; };
 		F294773C1A371DD800707E8A /* Characterics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Characterics.h; sourceTree = "<group>"; };
 		F2A782D21A396EEA007871FA /* KibeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KibeaconManager.h; sourceTree = "<group>"; };
 		F2B130CC1A39BB3300233A3B /* iBeaconSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconSampleViewController.h; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		F2BA932C1A369AC00076B752 /* KBCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBCentralManager.h; sourceTree = "<group>"; };
 		F2BA932D1A369AC00076B752 /* KBPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBPeripheral.h; sourceTree = "<group>"; };
 		F2BA932E1A369AC00076B752 /* KibeaconBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KibeaconBlocks.h; sourceTree = "<group>"; };
+		F2CC22681A3AE6F60011AAF5 /* libiOS-Kibeacon-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libiOS-Kibeacon-SDK.a"; path = "iOS-Kibeacon-Sample/iOS-Kibeacon-SDK/libiOS-Kibeacon-SDK.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F201D7341A39BA20004829A7 /* libiOS-Kibeacon-SDK.a in Frameworks */,
+				F2CC22691A3AE6F60011AAF5 /* libiOS-Kibeacon-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +74,7 @@
 		F2BA92F91A367BFE0076B752 = {
 			isa = PBXGroup;
 			children = (
+				F2CC22681A3AE6F60011AAF5 /* libiOS-Kibeacon-SDK.a */,
 				F2BA93041A367BFE0076B752 /* iOS-Kibeacon-Sample */,
 				F2BA93031A367BFE0076B752 /* Products */,
 			);
@@ -119,7 +120,6 @@
 				F2BA932E1A369AC00076B752 /* KibeaconBlocks.h */,
 				F294773C1A371DD800707E8A /* Characterics.h */,
 				F2A782D21A396EEA007871FA /* KibeaconManager.h */,
-				F201D7331A39BA20004829A7 /* libiOS-Kibeacon-SDK.a */,
 			);
 			path = "iOS-Kibeacon-SDK";
 			sourceTree = "<group>";
@@ -155,6 +155,11 @@
 				TargetAttributes = {
 					F2BA93011A367BFE0076B752 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

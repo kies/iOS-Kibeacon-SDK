@@ -27,6 +27,19 @@
  *  Stop ranging for the Kibeacon
  */
 - (void)stopRangingForBeacons;
+
+/*!
+ *  Start monitoring for did enter or exit Kibeacon
+ *
+ *  @param check   Check to turn on Location Access.
+ *  @param updated Enter or Exit callback.
+ */
+- (void)startMonitoringForBeacons:(KBCheckLocationAccessForMonitoring)check Updated:(KBDidUpdateRegion)updated;
+/*!
+ *  Start monitoring for did enter or exit Kibeacon
+ */
+- (void)stopMonitoringForBeacons;
+
 /*!
  *  Make a Details Kibeacon String from CLBeacon
  *
